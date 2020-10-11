@@ -43,4 +43,17 @@ public class LinkedListTest {
 		linkedList.addAtMiddle(secondNode);
 		assertEquals("56->30->70", linkedList.toString());
 	}
+
+	@Test
+	public void givenLinkedListTestShouldDeleteFirstElement() {
+		Node<Integer> firstNode = new Node<>(56);
+		Node<Integer> secondNode = new Node<>(30);
+		Node<Integer> thirdNode = new Node<>(70);
+		LinkedList linkedList = new LinkedList();
+		linkedList.append(firstNode);
+		linkedList.append(secondNode);
+		linkedList.append(thirdNode);
+		Node poppedNode = (Node) linkedList.pop();
+		assertEquals(firstNode, poppedNode);
+	}
 }
