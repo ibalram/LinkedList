@@ -1,6 +1,6 @@
 package com.cg;
 
-public class Node<T> implements INode<T> {
+public class Node<T extends Comparable> implements INode<T> {
 	private T key;
 	private INode next;
 
