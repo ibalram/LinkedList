@@ -73,6 +73,17 @@ public class LinkedList {
 		return ret;
 	}
 
+	public <T> INode find(T key) {
+		INode root = head;
+		while (root != null) {
+			if (root.getKey() == key) {
+				return root;
+			}
+			root = root.getNext();
+		}
+		return null;
+	}
+
 	public void printLinkedList() {
 		String str = this.toString();
 		System.out.println(str.length() != 0 ? str : "LinkedList is empty.");
