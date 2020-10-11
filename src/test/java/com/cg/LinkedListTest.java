@@ -97,4 +97,20 @@ public class LinkedListTest {
 		linkedList.printLinkedList();
 		assertEquals("56->30->40->70", linkedList.toString());
 	}
+
+	@Test
+	public void givenLinkedListTestDeleteNodeWithGivenValue() {
+		Node<Integer> firstNode = new Node<>(56);
+		Node<Integer> secondNode = new Node<>(30);
+		Node<Integer> thirdNode = new Node<>(70);
+		LinkedList linkedList = new LinkedList();
+		linkedList.append(firstNode);
+		linkedList.append(secondNode);
+		linkedList.append(thirdNode);
+		Node nodeWithValue = (Node) linkedList.find((Integer) 30);
+		linkedList.insertAfterNode(nodeWithValue, (Integer) 40);
+		linkedList.remove(40);
+		linkedList.printLinkedList();
+		assertEquals(3, linkedList.size());
+	}
 }

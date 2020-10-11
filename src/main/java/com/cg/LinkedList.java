@@ -3,12 +3,14 @@ package com.cg;
 public class LinkedList {
 	private INode head;
 	private INode tail;
+	private int size;
 
 	private int count = 0;
 
 	public LinkedList() {
 		this.head = null;
 		this.tail = null;
+		this.size = 0;
 	}
 
 	public void add(INode node) {
@@ -19,6 +21,7 @@ public class LinkedList {
 			node.setNext(head);
 			this.head = node;
 		}
+		size++;
 	}
 
 	public void append(INode node) {
@@ -29,6 +32,7 @@ public class LinkedList {
 			this.tail.setNext(node);
 			this.tail = tail.getNext();
 		}
+		size++;
 	}
 
 	public void addAtMiddle(INode node) {
@@ -45,6 +49,7 @@ public class LinkedList {
 		}
 		node.setNext(slow.getNext());
 		slow.setNext(node);
+		size++;
 	}
 
 	public INode pop() {
@@ -54,6 +59,7 @@ public class LinkedList {
 		INode ret = head;
 		head = head.getNext();
 		ret.setNext(null);
+		size--;
 		return ret;
 	}
 
@@ -70,6 +76,7 @@ public class LinkedList {
 		INode ret = prev.getNext();
 		prev.setNext(null);
 		ret.setNext(null);
+		size--;
 		return ret;
 	}
 
@@ -90,6 +97,27 @@ public class LinkedList {
 		Node newNode = new Node(newKey);
 		newNode.setNext(prevNode.getNext());
 		prevNode.setNext(newNode);
+		size++;
+	}
+
+	public <T> void remove(T key) {
+		if (head == null) {
+			return;
+		}
+		INode root = head;
+		INode prev = null;
+		while (root != null && root.getKey() != key) {
+			prev = root;
+			root = root.getNext();
+		}
+		if (root == null)
+			return;
+		size--;
+		if (prev == null) {
+			head = head.getNext();
+			return;
+		}
+		prev.setNext(root.getNext());
 	}
 
 	public void printLinkedList() {
@@ -114,6 +142,10 @@ public class LinkedList {
 
 	public INode getHead() {
 		return head;
+	}
+
+	public int size() {
+		return size;
 	}
 
 	public INode getTail() {
