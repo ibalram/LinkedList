@@ -57,6 +57,22 @@ public class LinkedList {
 		return ret;
 	}
 
+	public INode popLast() {
+		if (head == null) {
+			return null;
+		}
+		INode prev = null;
+		INode root = head;
+		while (root != null && root.getNext() != null) {
+			prev = root;
+			root = root.getNext();
+		}
+		INode ret = prev.getNext();
+		prev.setNext(null);
+		ret.setNext(null);
+		return ret;
+	}
+
 	public void printLinkedList() {
 		String str = this.toString();
 		System.out.println(str.length() != 0 ? str : "LinkedList is empty.");

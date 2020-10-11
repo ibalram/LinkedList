@@ -56,4 +56,17 @@ public class LinkedListTest {
 		Node poppedNode = (Node) linkedList.pop();
 		assertEquals(firstNode, poppedNode);
 	}
+
+	@Test
+	public void givenLinkedListTestShouldDeleteLastElement() {
+		Node<Integer> firstNode = new Node<>(56);
+		Node<Integer> secondNode = new Node<>(30);
+		Node<Integer> thirdNode = new Node<>(70);
+		LinkedList linkedList = new LinkedList();
+		linkedList.append(firstNode);
+		linkedList.append(secondNode);
+		linkedList.append(thirdNode);
+		Node poppedNode = (Node) linkedList.popLast();
+		assertEquals(thirdNode, poppedNode);
+	}
 }
