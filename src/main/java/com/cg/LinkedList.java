@@ -84,6 +84,14 @@ public class LinkedList {
 		return null;
 	}
 
+	public <T> void insertAfterNode(INode prevNode, T newKey) {
+		if (prevNode == null)
+			return;
+		Node newNode = new Node(newKey);
+		newNode.setNext(prevNode.getNext());
+		prevNode.setNext(newNode);
+	}
+
 	public void printLinkedList() {
 		String str = this.toString();
 		System.out.println(str.length() != 0 ? str : "LinkedList is empty.");
