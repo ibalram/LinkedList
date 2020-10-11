@@ -21,6 +21,16 @@ public class LinkedList {
 		}
 	}
 	
+	public void append(INode node) {
+		if (head == null) {
+			this.head = node;
+			this.tail = node;
+		} else {
+			this.tail.setNext(node);
+			this.tail = tail.getNext();
+		}
+	}
+	
 	public void printLinkedList() {
 		String str = this.toString();
 		System.out.println(str.length()!=0? str:"LinkedList is empty.");
